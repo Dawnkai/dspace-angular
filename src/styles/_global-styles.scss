@@ -306,21 +306,21 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
         opacity: 0.7;
     }
     &.btn-success {
-        background-color: var(--ds-button-success-background-color);
-        border-color: var(--ds-button-success-background-color);
+        background-color: darken($success, 20%);
+        border-color: darken($success, 20%);
         &:hover {
-            background-color: var(--ds-button-success-background-hover-color);
-            border-color: var(--ds-button-success-background-hover-color);
+            background-color: darken($success, 30%);
+            border-color: darken($success, 30%);
         }
         &:focus {
             outline-color: darken($success, 20%);
         }
     }
     &.btn-outline-success {
-        border-color: var(--ds-button-success-background-color);
-        color: var(--ds-button-success-background-color);
+        border-color: darken($success, 20%);
+        color: darken($success, 20%);
         &:hover{
-            background-color: var(--ds-button-success-background-hover-color);
+            background-color: darken($success, 30%);
             color: $white;
         }
         &:focus {
@@ -328,9 +328,9 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
         }
     }
     &.btn-warning {
-        background-color:var(--ds-button-warning-background-color);
+        background-color: darken($warning, 20%);
         &:hover{
-            background-color:var(--ds-button-warning-background-hover-color);
+            background-color: darken($warning, 30%);
         }
         &:disabled{
             background-color: transparent;
@@ -340,16 +340,16 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
         }
     }
     &.btn-outline-warning {
-        border-color:var(--ds-button-warning-background-color);
-        color:var(--ds-button-warning-background-color);
+        border-color: darken($warning, 20%);
+        color: darken($warning, 20%);
         &:hover {
-            background-color:var(--ds-button-warning-background-hover-color);
+            background-color: darken($warning, 30%);
             color: $white;
         }
         &:disabled {
             background-color: transparent;
             &:hover{
-                color:var(--ds-button-warning-background-color);
+                color: darken($warning, 20%);
             }
         }
         :focus {
@@ -386,4 +386,8 @@ ngb-accordion {
     a.close:not(:disabled):not(.disabled):hover {
         opacity: 0.9;
     }
+}
+
+.form-control:disabled::placeholder {
+    color: lighten($gray-700, 10%);
 }
