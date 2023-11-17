@@ -234,8 +234,7 @@ ds-dynamic-form-control-container.d-none {
 }
 
 .badge-archived {
-  background-color: var(--ds-badge-archived-background-color);
-	color: var(--ds-badge-archived-color)
+  background-color: darken($green, 25);
 }
 
 .badge-workflow {
@@ -359,6 +358,11 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
             background-color: darken($warning, 22%);
         }
     }
+    &.btn-secondary {
+        &:focus {
+            outline-color: darken($secondary, 20%);
+        }
+    }
     &.btn-danger:focus, &.btn-outline-danger:focus {
         outline-color: darken($danger, 20%);
     }
@@ -367,9 +371,14 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
     }
 }
 
-dynamic-ng-bootstrap-checkbox .custom-control-label::before {
-    border-color: $gray-700;
-}
+// THIS DOESNT WORK
+// dynamic-ng-bootstrap-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+//     border-color: $gray-700;
+//     &:focus {
+//         outline: 2px solid $gray-700 !important;
+//         box-shadow: none !important;
+//     }
+// }
 
 .text-warning {
     color: darken($warning, 10%) !important;
@@ -388,6 +397,13 @@ ngb-accordion {
     }
 }
 
-.form-control:disabled::placeholder {
-    color: lighten($gray-700, 10%);
+.form-control, .page-link {
+    &:disabled::placeholder {
+        color: lighten($gray-700, 10%);
+    }
+    &:focus {
+        box-shadow: none;
+        outline: 2px solid lighten($gray-700, 10%);
+        outline-offset: 2px !important;
+    }
 }

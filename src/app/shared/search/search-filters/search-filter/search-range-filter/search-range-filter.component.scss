@@ -26,7 +26,7 @@
     }
 
   .noUi-connect {
-      background: var(--ds-range-filter-connect-color);
+      background: darken($green, 20%);
   }
 
   .noUi-target {
@@ -38,9 +38,9 @@
     width: calc(100% + var(--ds-slider-handle-width));
   }
   .noUi-handle {
-      border-color: var(--ds-range-filter-border-color);
+      border-color: $dark;
       &::before, &::after {
-          background-color: var(--ds-range-filter-border-color);
+          background-color: $dark;
       }
   }
 }

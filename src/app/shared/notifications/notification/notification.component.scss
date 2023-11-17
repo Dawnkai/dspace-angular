@@ -5,7 +5,8 @@
 }
 
 .close {
-  outline: none !important
+  outline: none !important;
+  opacity: 0.8;
 }
 
 .notification-icon {
@@ -34,5 +35,5 @@
 	color: darken($success, 22%);
 }
 .alert-danger {
-  color: var(--ds-notification-danger-color);
+  color: darken($danger, 22%);
 }
