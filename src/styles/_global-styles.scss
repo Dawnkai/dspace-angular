@@ -371,14 +371,14 @@ ul.dso-edit-menu-dropdown > li .nav-item.nav-link {
     }
 }
 
-// THIS DOESNT WORK
-// dynamic-ng-bootstrap-checkbox .custom-control-input:focus ~ .custom-control-label::before {
-//     border-color: $gray-700;
-//     &:focus {
-//         outline: 2px solid $gray-700 !important;
-//         box-shadow: none !important;
-//     }
-// }
+dynamic-ng-bootstrap-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    outline: 2px solid $gray-700 !important;
+    box-shadow: none !important;
+    outline-offset: 2px !important;
+}
+dynamic-ng-bootstrap-checkbox .custom-control-label::before {
+    border-color: $gray-700;
+}
 
 .text-warning {
     color: darken($warning, 10%) !important;
