@@ -22,10 +22,10 @@ import {
 } from '../menu-provider.model';
 
 /**
- * Menu provider to create the "Edit User Agreement" menu in the admin sidebar
+ * Menu provider to create the "Edit CMS Metadata" menu in the admin sidebar
  */
 @Injectable()
-export class EditUserAgreementMenuProvider extends AbstractMenuProvider {
+export class EditCMSMetadataMenuProvider extends AbstractMenuProvider {
   constructor(
     protected authorizationService: AuthorizationDataService,
   ) {
@@ -42,10 +42,10 @@ export class EditUserAgreementMenuProvider extends AbstractMenuProvider {
             visible: isSiteAdmin,
             model: {
               type: MenuItemType.LINK,
-              text: 'menu.section.edit-user-agreement',
-              link: '/admin/edit-user-agreement',
+              text: 'menu.section.edit-cms-metadata',
+              link: '/admin/edit-cms-metadata',
             },
-            icon: 'list-alt',
+            icon: 'edit',
           },
         ] as PartialMenuSection[];
       }),

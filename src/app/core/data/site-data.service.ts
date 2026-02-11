@@ -81,4 +81,11 @@ export class SiteDataService extends BaseDataService<Site> implements FindAllDat
   patch(object: Site, operations: Operation[]): Observable<RemoteData<Site>> {
     return this.patchData.patch(object, operations);
   }
+
+  /**
+   * Set the processes stale
+   */
+  setStale(): Observable<boolean> {
+    return this.requestService.setStaleByHrefSubstring(this.linkPath);
+  }
 }
