@@ -15,15 +15,15 @@ import { of } from 'rxjs';
 import { environment } from '../../../environments/environment.test';
 import { SiteDataService } from '../../core/data/site-data.service';
 import { Site } from '../../core/shared/site.model';
-import { TranslateLoaderMock } from '../../shared/mocks/translate-loader.mock';
-import { NotificationsService } from '../../shared/notifications/notifications.service';
-import { NotificationsServiceStub } from '../../shared/testing/notifications-service.stub';
-import { EditCmsMetadataComponent } from './edit-cms-metadata.component';
+import { AdminEditCmsMetadataComponent } from './admin-edit-cms-metadata.component';
+import { TranslateLoaderMock } from '@dspace/core/testing/translate-loader.mock';
+import { NotificationsServiceStub } from '@dspace/core/testing/notifications-service.stub';
+import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
 
-describe('EditCmsMetadataComponent', () => {
+describe('AdminEditCmsMetadataComponent', () => {
 
-  let component: EditCmsMetadataComponent;
-  let fixture: ComponentFixture<EditCmsMetadataComponent>;
+  let component: AdminEditCmsMetadataComponent;
+  let fixture: ComponentFixture<AdminEditCmsMetadataComponent>;
   const site = Object.assign(new Site(), {
     metadata: { },
   });
@@ -54,7 +54,7 @@ describe('EditCmsMetadataComponent', () => {
             useClass: TranslateLoaderMock,
           },
         }),
-        EditCmsMetadataComponent,
+        AdminEditCmsMetadataComponent,
       ],
       providers: [
         { provide: NotificationsService, useValue: NotificationsServiceStub },
@@ -65,7 +65,7 @@ describe('EditCmsMetadataComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditCmsMetadataComponent);
+    fixture = TestBed.createComponent(AdminEditCmsMetadataComponent);
     component = fixture.componentInstance;
     siteServiceStub.find.and.returnValue(of(site));
     siteServiceStub.patch.and.returnValue(of(site));

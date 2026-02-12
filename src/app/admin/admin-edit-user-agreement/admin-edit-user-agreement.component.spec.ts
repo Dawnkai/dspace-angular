@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
-  async,
+  waitForAsync,
   ComponentFixture,
   inject,
   TestBed,
@@ -26,10 +26,19 @@ import { ScriptDataService } from '../../core/data/processes/script-data.service
 import { SiteDataService } from '../../core/data/site-data.service';
 import { Site } from '../../core/shared/site.model';
 import { AlertComponent } from '../../shared/alert/alert.component';
-import { TranslateLoaderMock } from '../../shared/mocks/translate-loader.mock';
-import { NotificationsService } from '../../shared/notifications/notifications.service';
-import { NotificationsServiceStub } from '../../shared/testing/notifications-service.stub';
 import { AdminEditUserAgreementComponent } from './admin-edit-user-agreement.component';
+import { NotificationsServiceStub } from '@dspace/core/testing/notifications-service.stub';
+import { TranslateLoaderMock } from '@dspace/core/testing/translate-loader.mock';
+import { NotificationsService } from '@dspace/core/notification-system/notifications.service';
+import { provideMockStore } from '@ngrx/store/testing';
+import { APP_DATA_SERVICES_MAP } from '@dspace/core/data-services-map-type';
+import { ResourceType } from '@dspace/core/shared/resource-type';
+
+const TEST_MODEL = new ResourceType('testmodel');
+
+const mockDataServiceMap: any = new Map([
+  [TEST_MODEL.value, () => import('../../core/testing/test-data-service.mock').then(m => m.TestDataService)],
+]);
 
 describe('AdminEditUserAgreementComponent', () => {
 
@@ -53,7 +62,7 @@ describe('AdminEditUserAgreementComponent', () => {
     },
   });
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
 
     scriptDataService = {};
     notificationService = new NotificationsServiceStub();
@@ -72,6 +81,13 @@ describe('AdminEditUserAgreementComponent', () => {
           },
         }), AdminEditUserAgreementComponent],
       providers: [AdminEditUserAgreementComponent,
+        provideMockStore({
+          initialState: {
+            index: {
+            }
+          }
+        }),
+        { provide: APP_DATA_SERVICES_MAP, useValue: mockDataServiceMap },
         { provide: NotificationsService, useValue: notificationService },
         { provide: SiteDataService, useValue: siteService },
         { provide: ScriptDataService, useValue: scriptDataService }],
@@ -89,7 +105,7 @@ describe('AdminEditUserAgreementComponent', () => {
     expect(comp).toBeDefined();
   }));
 
-  it('should fill the text areas with the dc.rights values', async(() => {
+  it('should fill the text areas with the dc.rights values', waitForAsync(() => {
     expect(component.userAgreementTexts.get('en').text).toEqual('This is the End User Agreement text for this test');
     expect(component.userAgreementTexts.get('de').text).toEqual('Dies ist der Text der Endbenutzervereinbarung für diesen Test');
   }));
