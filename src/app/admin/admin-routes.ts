@@ -13,6 +13,8 @@ import {
 } from './admin-routing-paths';
 import { ThemedAdminSearchPageComponent } from './admin-search-page/themed-admin-search-page.component';
 import { ThemedAdminWorkflowPageComponent } from './admin-workflow-page/themed-admin-workflow-page.component';
+import { AdminEditUserAgreementComponent } from './admin-edit-user-agreement/admin-edit-user-agreement.component';
+import { AdminEditCmsMetadataComponent } from './admin-edit-cms-metadata/admin-edit-cms-metadata.component';
 
 export const ROUTES: Route[] = [
   {
@@ -60,6 +62,18 @@ export const ROUTES: Route[] = [
     resolve: { breadcrumb: i18nBreadcrumbResolver },
     loadChildren: () => import('../system-wide-alert/system-wide-alert-routes').then((m) => m.ROUTES),
     data: { title: 'admin.system-wide-alert.title', breadcrumbKey: 'admin.system-wide-alert' },
+  },
+  {
+    path: 'edit-user-agreement',
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    component: AdminEditUserAgreementComponent,
+    data: { title: 'admin.edit-user-agreement.title', breadcrumbKey: 'admin.edit-user-agreement' },
+  },
+  {
+    path: 'edit-cms-metadata',
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    component: AdminEditCmsMetadataComponent,
+    data: { title: 'admin.edit-cms-metadata.title', breadcrumbKey: 'admin.edit-cms-metadata' },
   },
   {
     path: LDN_PATH,
